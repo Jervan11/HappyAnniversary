@@ -116,11 +116,10 @@
 
   <div class="container">
     <div class="message-box">
-      <h1>Happy Anniversary, Langga!! ❤️</h1>
+      <h1 id="personalMessage">Happy Anniversary!! ❤️</h1>
       <a href="#" class="romantic-link" onclick="showMessage()">Click for a surprise 💌</a>
       <div class="message" id="secretMessage">
-        Hi langga,Bag o lng ta ka inaway, thank you for being the reason I smile every day. <br>
-        With you, I've found my best friend and my forever. 💖<br>
+        Hi langga, thank you for being the reason I smile every day. With you, I've found my best friend and my forever. 💖<br>
         I love you endlessly. 💕
       </div>
     </div>
@@ -135,7 +134,7 @@
   <script>
     function showMessage() {
       const msg = document.getElementById("secretMessage");
-      msg.style.display = "block";
+      msg.style.display = "block"; 
       for (let i = 0; i < 20; i++) createHeart();
     }
 
@@ -143,11 +142,18 @@
       const heart = document.createElement("div");
       heart.classList.add("floating-heart");
       heart.textContent = "💗";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.top = "100vh";
-      heart.style.fontSize = Math.random() * 15 + 10 + "px";
+      heart.style.left = Math.random() * 100 + "vw"; 
+      heart.style.top = "100vh"; 
+      heart.style.fontSize = Math.random() * 15 + 10 + "px"; 
       document.body.appendChild(heart);
       setTimeout(() => heart.remove(), 4000);
+    }
+
+    // Handle URL parameters for personalization
+    const urlParams = new URLSearchParams(window.location.search);
+    const name = urlParams.get('name');  // Example: name=Langga
+    if (name) {
+      document.getElementById('personalMessage').textContent = `Happy Anniversary, ${name}!! ❤️`;
     }
 
     let slideIndex = 0;
